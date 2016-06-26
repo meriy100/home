@@ -3,8 +3,10 @@
 alias la="ls -a"
 alias ll="ls -l"
 alias lla="ls -la"
-alias ls="ls --color"
+alias ls="ls -G"
 alias gr="grep -rn --color=auto"
+alias vi="/usr/local/bin/vim"
+alias vim="/usr/local/bin/vim"
 alias bim='vim'
 alias bi='vim'
 alias :e='vim'
@@ -19,7 +21,9 @@ alias xmodmapdo='xmodmap ~/.Xmodmap'
 alias sourcedo='source ~/.zshrc'
 
 alias tmuxrw="tmux rename-window"
-
+alias tmuxrs="tmux rename-session"
+alias tmuxns="tmux new-session -s"
+alias tmux="tmux -u"
 
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
@@ -31,4 +35,4 @@ alias history='history -E'
 alias psg='ps -ax | grep'
 alias killq='kill -9'
 
-
+alias tree="tree -N"

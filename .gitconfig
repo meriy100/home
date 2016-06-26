@@ -14,5 +14,18 @@
   start = flow feature start
   finish = flow feature finish
   publish = flow feature publish
-[url "git@github.com:"]
-	pushinsteadof = https://github.com/
+#[url "git@github.com:"]
+#	pushinsteadof = https://github.com/
+[url "github:"]
+    InsteadOf = https://github.com/
+    InsteadOf = git@github.com
+[core]
+	quotepath = false
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[merge]
+	tool = vimdiff
+[mergetool]
+	prompt = false

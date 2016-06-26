@@ -1,14 +1,14 @@
-export LANG=ja_JP.utf8
+#export LANG=ja_JP.utf8
 
-compinit -u
+#compinit -u
 
 export TERM=xterm-256color
 ## 履歴の保存先
 HISTFILE=$HOME/.zsh-history
 ## メモリに展開する履歴の数
-HISTSIZE=100
+HISTSIZE=1000000
 ## 保存する履歴の数
-SAVEHIST=100000
+SAVEHIST=1000000
 
 ## 補完機能の強化
 autoload -U compinit
@@ -59,8 +59,8 @@ setopt print_eight_bit
 setopt share_history
 ## 補完候補のカーソル選択を有効に
 zstyle ':completion:*:default' menu select=1
-## 補完候補の色づけ
-eval `dircolors`
+# ## 補完候補の色づけ
+# eval `dircolors`
 export ZLS_COLORS=$LS_COLORS
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 ## ディレクトリ名だけで cd
@@ -94,8 +94,10 @@ setopt complete_aliases
 autoload colors
 colors
 #PROMPT="%{${fg[green]}%}[%n@%m] %(!.#.$) %{${reset_color}%}
-PROMPT="%{${fg[cyan]}%}[%n]%{${fg[green]}%}%~%{${reset_color}%}
->"
+
+PROMPT="%{${fg[blue]}%}%B[%n]%b%{${reset_color}%}%{${fg[green]}%}%~%{${reset_color}%}
+%(?|%{${fg[green]}%}🐰 |%{${fg[red]}%}💥 )>%{${reset_color}%}"
+
 #%{${fg[green]}%}[%n] %(!.#.$) %{${reset_color}%}"
 #%{${fg[yellow]}%}%[%n]$%{${reset_color}%}"
 #PROMPT2="%{${fg[blue]}%}%_> %{${reset_color}%}"
@@ -139,7 +141,7 @@ zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
 zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () { vcs_info }
-RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
+RPROMPT=$RPROMPT'%*${vcs_info_msg_0_}'
 
 
 #android sdk path
@@ -154,9 +156,33 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 export EDITOR=vim        # エディタをvimに設定
 ##android studio
-export PATH="$HOME/android-studio/bin/:$PATH"
+# export PATH="$HOME/android-studio/bin/:$PATH"
+function git(){hub "$@"} # zsh
 
-#[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+set clipboard=unnamed,autoselect
+
+
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 [ -f ~/.zshrc.alias ] && source ~/.zshrc.alias
 
 
+
+
+# w3m google検索
+
+function google() {
+local str opt
+if [ $ != 0 ]; then
+   for i in $*; do
+     str="$str+$i"
+   done
+    str=`echo $str | sed 's/^\+//'`
+ opt='search?num=50&hl=ja&lr=lang_ja'
+    opt="${opt}&q=${str}"
+fi
+w3m http://www.google.co.jp/$opt
+}
+
+function cdu() {
+  cd `git rev-parse --show-toplevel`
+}
