@@ -144,8 +144,7 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-export PATH="$HOME/local/bin:$PATH"
-export PATH="$HOME/local/script/bin:$PATH"
+export PATH="$HOME/.ghq/github.com/meriy100/local_scripts/bin:$PATH"
 
 
 
