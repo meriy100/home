@@ -176,7 +176,7 @@ stty -ixon -ixoff
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 
-export EDITOR=nvim        # エディタをvimに設定
+export EDITOR=vim        # エディタをvimに設定
 ##android studio
 # export PATH="$HOME/android-studio/bin/:$PATH"
 # function git(){hub "$@"} # zsh
@@ -239,7 +239,7 @@ bindkey '^o' peco-src
 
 ### git branch and peco
 function peco-src-git-branch () {
-  local selected_branch=$(git branch | ruby -pe '$_.gsub!(/\*/, " ")' | ruby -pe '$_.gsub!(/#/, "\\#")'| peco --query "$LBUFFER")
+  local selected_branch=$(git branch -a | ruby -pe '$_.gsub!(/\*/, " ")' | ruby -pe '$_.gsub!(/#/, "\\#")'| peco --query "$LBUFFER")
   if [ -n "$selected_branch" ]; then
     BUFFER="git checkout ${selected_branch}"
     zle accept-line
