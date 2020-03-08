@@ -278,6 +278,12 @@ export RUBY_CONFIGURE_OPTS="--with-readline-dir=$(brew --prefix readline)"
 
 
 
-export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
+# export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
 
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/meriy100/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/meriy100/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/meriy100/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/meriy100/google-cloud-sdk/completion.zsh.inc'; fi
